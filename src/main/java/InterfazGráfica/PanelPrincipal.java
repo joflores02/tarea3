@@ -25,12 +25,20 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     }
 
     @Override
+
+    /**en caso de que el expendedor no se encuentre vacío,
+     * creamos una instancia para su parte gráfica**/
+    @param Graphics g
+
     public void paint(Graphics g){
         super.paint(g);
         if(exp!=null)exp.paint(g);
         if(com!=null)com.paint(g);
     }
+    @param MouseEvent e, evento o "click" del usuario
 
+
+    /*hacemos esto por cada botón*/
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -49,6 +57,8 @@ public class PanelPrincipal extends JPanel implements MouseListener{
             exp.rellenarFanta();
             repaint();
         }
+        /*aquí asignamos la bebida a comprar por el comprador, según su posición en la interfaz
+         */
         if(e.getX()>=90 && e.getX()<=90+120 && e.getY()>=255 && e.getY()<=255+25){
             try {
                 com.cualBebida(1);
@@ -82,9 +92,9 @@ public class PanelPrincipal extends JPanel implements MouseListener{
                 Logger.getLogger(PanelPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }
+        } /*el comprador puede recoger su vuelto tanto con click derecho como izquierdo*/
         if(e.getX()>=492 && e.getX()<=492+310 && e.getY()>=519 && e.getY()<= 519+80){
-            if(SwingUtilities.isRightMouseButton(e)){
+           if(SwingUtilities.isRightMouseButton(e)){
                 while(com.getVuelto()!=null){
                     com.getVuelto();
                 }
