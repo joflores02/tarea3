@@ -83,6 +83,96 @@ public class Comprador {
         }
     }
 
+    public void paint(Graphics g) {
+        g.setColor(Color.white);
+        g.drawRect(x, y, 350, 600);
+        Color color = new Color(102, 40, 153);
+        g.setColor(color);
+        g.fillRect(x + 1, y + 1, 349, 599);
+
+        //Recuadro del precio
+        g.setColor(Color.white);
+        g.drawRect(x+17, y+20,  150, 40);
+        g.setColor(Color.black);
+        g.fillRect(x+17,y+20,149,39);
+        int precioBebida = exp.getPrecioBebida();
+        String precioTexto = "Precio: $" + precioBebida;
+        g.setColor(Color.white);
+        g.setFont(new Font("SansSerif", Font.BOLD, 20));
+        g.drawString(precioTexto,x+26,y+47);
+
+        //Recuadro para ingresar el dinero.
+        g.setColor(Color.white);
+        g.setFont(new Font("Dialog", Font.PLAIN, 14));
+        g.drawString("Seleccionar monedas",x+20,y+90);
+
+        Color brown=new Color(153,102,0);
+        g.setColor(brown);
+        g.fillOval(x+20, y+110, 50, 50);
+        g.setColor(Color.black);
+        g.drawOval(x+20, y+110, 50, 50);
+        g.setColor(Color.white);
+        g.drawString("100", x+34, y+139);
+
+        Color grey=new Color(204,204,204);
+        g.setColor(grey);
+        g.fillOval(x+80, y+110, 50, 50);
+        g.setColor(Color.black);
+        g.drawOval(x+80, y+110, 50, 50);
+        g.setColor(Color.white);
+        g.drawString("500", x+95, y+139);
+
+        Color gold=new Color(255,204,51);
+        g.setColor(gold);
+        g.fillOval(x+140, y+110, 50, 50);
+        g.setColor(Color.black);
+        g.drawOval(x+140, y+110, 50, 50);
+        g.setColor(Color.white);
+        g.drawString("1000", x+151, y+139);
+
+
+        //Selección bebida
+        g.setColor(Color.white);
+        g.drawString("Elija sabor de la bebida", x+20,y+192);
+        g.setColor(Color.black);
+        g.drawRect(x+20,y+205,120,25);
+        g.setColor(Color.red);
+        g.fillRect(x+20, y+205, 120, 25);
+        g.setColor(Color.white);
+        g.drawString("Coca Cola", x+50, y+223);
+
+        g.setColor(Color.black);
+        g.drawRect(x+20,y+235,120,25);
+        g.setColor(Color.green);
+        g.fillRect(x+20, y+235, 120, 25);
+        g.setColor(Color.white);
+        g.drawString("Sprite", x+60, y+253);
+
+        g.setColor(Color.black);
+        g.drawRect(x+20,y+265,120,25);
+        Color o=new Color(255,153,0);
+        g.setColor(o);
+        g.fillRect(x+20, y+265, 120, 25);
+        g.setColor(Color.white);
+        g.drawString("Fanta", x+60, y+283);
+
+        for(Bebida bebida:beb){
+            bebida.paint(g);
+        }
+
+
+
+        g.setColor(Color.white);
+        g.drawString("Dinero a ingresar", x+20,y+315);
+        g.drawString("Vuelto", x+20,y+270+(270-140));
+        g.drawString("Bebida Comprada", x+20,y+260+2*(260-140));
+
+        for(Moneda moneda:monedero){
+            moneda.paint(g);
+        }
+
+    }
+
     public int cuantoVuelto(){
         return vuelto;
     }
