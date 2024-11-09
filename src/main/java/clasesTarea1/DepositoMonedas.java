@@ -8,8 +8,9 @@ import java.util.ArrayList;
  * Se encarga de almacenar y dibujar las monedas disponibles en el depósito.
  */
 public class DepositoMonedas {
-    private int x,y, aux;
+    private int x,y, aux, posicionInicialX;
     private ArrayList<Moneda> dm;
+    private static final int MAX_MONEDAS = 140;
 
     /**
      * Constructor de la clase.
@@ -21,18 +22,26 @@ public class DepositoMonedas {
     public DepositoMonedas(int x,int y){
         this.x=x;this.y=y;
         dm=new ArrayList<Moneda>();
+        this.posicionInicialX = x + 320;
     }
 
     /**
      * Agrega una moneda al depósito. La moneda se coloca en la posición correspondiente
-     * en la interfaz gráfica.
+     * en la interfaz gráfica, desplazándose hacia la izquierda de acuerdo con el número
+     * de monedas ya almacenadas. Si se alcanza el máximo de 140 monedas, el ciclo
+     * de posiciones se reinicia, pero el desplazamiento continúa.
      *
      * @param moneda La moneda a agregar al depósito.
      */
     public void addMoneda(Moneda moneda){
+        if (dm.size() % MAX_MONEDAS == 0) { // Cada vez que llega al máximo vuelve a la posición inicial
+            aux = 0;
+        }
         dm.add(moneda);
-        moneda.setXY(x+320+aux, y+395);
-        aux-=3;
+
+        moneda.setXY(posicionInicialX + aux, y + 395); // Establecer la posición de la moneda con el desplazamiento actual
+
+        aux -= 3; // Desplazar la posición para la próxima moneda
     }
 
     /**

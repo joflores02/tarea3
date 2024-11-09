@@ -48,9 +48,24 @@ public class DepositoVuelto {
         g.setColor(Color.white);
         g.fillRect(x+1, y+1, 309, 79);
 
-        for(Moneda moneda:m){
-            moneda.paint(g);
+        // Dibujar solo hasta 80 monedas para no excederse de los limites del recuadro de vuelto
+        int maxMonedas = 80;
+        int monedasDibujadas = 0;
+
+        for (Moneda moneda : m) {
+            if (monedasDibujadas < maxMonedas) {
+                moneda.paint(g);
+                monedasDibujadas++;
+            }
         }
+
+        if (m.size() > maxMonedas) {
+            g.setColor(Color.red);
+            g.setFont(new Font("SansSerif", Font.BOLD, 13));
+            g.drawString("+$100...", x + 4, y + 77);
+        }
+
+
         if (!m.isEmpty()) {
             g.setColor(Color.black);
             g.setFont(new Font("SansSerif", Font.BOLD, 12));
