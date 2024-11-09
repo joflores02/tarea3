@@ -38,7 +38,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     @param MouseEvent e, evento o "click" del usuario
 
 
-    /*hacemos esto por cada botón*/
+    /**Hacemos esto por cada botón**/
 
     @Override
     public void mouseClicked(MouseEvent e) {
