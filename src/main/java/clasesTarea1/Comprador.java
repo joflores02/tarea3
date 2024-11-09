@@ -15,6 +15,8 @@ public class Comprador {
     public int Mon100, Mon500, Mon1000;
     private int serieMoneda=500;
 
+    @param Expendedor exp, el que almacena los productos
+
     public Comprador(Expendedor exp, int x, int y) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException{
         this.x=x; this.y=y;
         this.exp=exp;
