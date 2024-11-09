@@ -3,6 +3,11 @@ package clasesTarea1;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * La clase representa a un comprador que interactúa con un expendedor
+ * para seleccionar y comprar bebidas, manejar monedas y recibir vuelto. También
+ * gestiona la representación gráfica de sus acciones en la interfaz.
+ */
 public class Comprador {
     private Expendedor exp;
     private int vuelto;
@@ -15,8 +20,17 @@ public class Comprador {
     public int Mon100, Mon500, Mon1000;
     private int serieMoneda=500;
 
-    @param Expendedor exp, el que almacena los productos
-
+    /**
+     * Constructor de la clase Comprador.
+     * Inicializa las coordenadas, el expendedor y las colecciones de monedas y bebidas.
+     *
+     * @param exp El expendedor con el que interactúa el comprador.
+     * @param x Coordenada x en la interfaz gráfica del comprador.
+     * @param y Coordenada y en la interfaz gráfica del comprador.
+     * @throws PagoIncorrectoException Si el pago realizado es incorrecto.
+     * @throws PagoInsuficienteException Si el pago realizado es insuficiente.
+     * @throws NoHayBebidaException Si no hay bebidas disponibles en el expendedor.
+     */
     public Comprador(Expendedor exp, int x, int y) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException{
         this.x=x; this.y=y;
         this.exp=exp;
@@ -24,6 +38,10 @@ public class Comprador {
         beb= new ArrayList<>();
     }
 
+    /**
+     * Agrega una moneda de 100 al monedero del comprador.
+     * La moneda se agrega al listado y se actualiza el valor total de dinero.
+     */
     public void addMoneda100(){
         Moneda m=new Moneda100(serieMoneda++,0,0);
         m.setXY(x+Mon100+20,y+320);
@@ -33,6 +51,10 @@ public class Comprador {
         dinero+=m.getValor();
     }
 
+    /**
+     * Agrega una moneda de 500 al monedero del comprador.
+     * La moneda se agrega al listado y se actualiza el valor total de dinero.
+     */
     public void addMoneda500(){
         Moneda m=new Moneda500(serieMoneda++,0,0);
         m.setXY(x+Mon500+35*4, y+320);
@@ -41,6 +63,11 @@ public class Comprador {
         Mon500-=2;
         dinero+=m.getValor();
     }
+
+    /**
+     * Agrega una moneda de 1000 al monedero del comprador.
+     * La moneda se agrega al listado y se actualiza el valor total de dinero.
+     */
     public void addMoneda1000(){
         Moneda m=new Moneda1000(serieMoneda++,0,0);
         m.setXY(x+Mon1000+(30*4)*2+30, y+320);
@@ -50,6 +77,12 @@ public class Comprador {
         dinero+=m.getValor();
     }
 
+    /**
+     * Obtiene el vuelto del expendedor y lo agrega al monedero del comprador.
+     * El vuelto también se dibuja en la interfaz gráfica.
+     *
+     * @return La moneda que representa el vuelto.
+     */
     public Moneda getVuelto(){
         Moneda m=exp.getVuelto();
         if(m!=null){
@@ -61,6 +94,9 @@ public class Comprador {
         }return m;
     }
 
+    /**
+     * Resetea las monedas del comprador y el vuelto.
+     */
     public void resetMonedas(){
         Mon100=0;
         Mon500=0;
@@ -68,6 +104,14 @@ public class Comprador {
         vuelto=0;
     }
 
+    /**
+     * Realiza la compra de una bebida seleccionada y resetea el estado de las monedas.
+     *
+     * @param cual El índice que indica qué bebida comprar.
+     * @throws PagoIncorrectoException Si el pago realizado es incorrecto.
+     * @throws PagoInsuficienteException Si el pago realizado es insuficiente.
+     * @throws NoHayBebidaException Si no hay bebidas disponibles en el expendedor.
+     */
     public void cualBebida(int cual) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException{
         resetMonedas();
         dinero=0;
@@ -75,6 +119,10 @@ public class Comprador {
         monedero.clear();
     }
 
+    /**
+     * Obtiene la bebida comprada del expendedor y la agrega al listado de bebidas del comprador.
+     * Y establece las coordenadas gráficas para la bebida.
+     */
     public void getBebida(){
         Bebida b=exp.getDepUnico();
         if(b!=null){
@@ -85,6 +133,12 @@ public class Comprador {
         }
     }
 
+    /**
+     * Dibuja la representación gráfica del comprador, incluyendo el contorno del área
+     * de selección de monedas, el área de selección de bebidas y las bebidas compradas.
+     *
+     * @param g El objeto Graphics usado para dibujar en la interfaz gráfica.
+     */
     public void paint(Graphics g) {
         g.setColor(Color.white);
         g.drawRect(x, y, 350, 600);
@@ -175,6 +229,11 @@ public class Comprador {
 
     }
 
+    /**
+     * Obtiene la cantidad de vuelto acumulado por el comprador.
+     *
+     * @return El monto total de vuelto recibido.
+     */
     public int cuantoVuelto(){
         return vuelto;
     }

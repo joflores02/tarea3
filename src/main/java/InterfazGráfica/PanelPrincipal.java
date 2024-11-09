@@ -10,38 +10,49 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
+/**
+ * La clase PanelPrincipal es un panel que representa la interfaz gráfica principal de la máquina expendedora.
+ * Maneja la interacción del usuario y gestiona las acciones relacionadas con la compra de bebidas,
+ * el depósito de monedas y la recolección de vuelto.
+ * Esta clase implementa MouseListener.
+ */
 public class PanelPrincipal extends JPanel implements MouseListener{
     private Comprador com;
     private Expendedor exp;
 
+    /**
+     * Constructor que inicializa la interfaz gráfica y los objetos Expendedor
+     * y Comprador.
+     *
+     * @throws PagoIncorrectoException Excepción que se lanza si el pago es incorrecto.
+     * @throws PagoInsuficienteException Excepción que se lanza si el pago es insuficiente.
+     * @throws NoHayBebidaException Excepción que se lanza si no hay bebidas disponibles.
+     */
     public PanelPrincipal() throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException {
         exp=new Expendedor(10,3000,600,50);
         com=new Comprador(exp,70,50);
         this.setBackground(Color.darkGray);
         this.addMouseListener(this);
 
-
     }
 
-    @Override
-
-    /**en caso de que el expendedor no se encuentre vacío,
-     * creamos una instancia para su parte gráfica**/
-    @param Graphics g
-
+    /**
+     * Dibuja la interfaz gráfica, incluyendo la máquina expendedora y el comprador.
+     *
+     * @param g El objeto graphics utilizado para dibujar los componentes gráficos.
+     */
     public void paint(Graphics g){
         super.paint(g);
         if(exp!=null)exp.paint(g);
         if(com!=null)com.paint(g);
     }
-    @param MouseEvent e, evento o "click" del usuario
 
-
-    /**Hacemos esto por cada botón**/
-
+    /**
+     * Maneja los eventos de clic del ratón.
+     *
+     * @param e El evento de clic del ratón.
+     */
     @Override
-    
     public void mouseClicked(MouseEvent e) {
         if (e.getX() >= 491 && e.getX() <= 491 + 150 &&
                 e.getY() >= 69 && e.getY() <= 69 + 350) {

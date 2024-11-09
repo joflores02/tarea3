@@ -2,36 +2,34 @@ package clasesTarea1;
 
 import java.awt.*;
 
-
 /**
- * La clase representa una bebida de tipo Fanta.
+ * La clase representa una bebida de tipo Sprite.
  */
-class Fanta extends Bebida{
-
+class Sprite extends Bebida{
     /**
-     * Constructor que inicializa una bebida de tipo Fanta con una serie y coordenadas de ubicación.
+     * Constructor que inicializa una bebida de tipo Sprite con una serie y coordenadas de ubicación.
      *
-     * @param serie El número de serie de la bebida Fanta.
+     * @param serie El número de serie de la bebida Sprite.
      * @param x La coordenada x de la ubicación de la bebida en la interfaz gráfica.
      * @param y La coordenada y de la ubicación de la bebida en la interfaz gráfica.
      */
-    public Fanta(int serie, int x,int y){
+    public Sprite(int serie, int x, int y){
         super(serie, x, y);
     }
 
     /**
-     * Representa el comportamiento de beber la bebida Fanta.
+     * Simula el acto de beber la bebida Sprite.
      *
-     * @return El nombre de la bebida, en este caso "Fanta".
+     * @return El nombre de la bebida, en este caso "Sprite".
      */
     @Override
     public String beber(){
-        return "Fanta";
+        return "Sprite";
     }
 
     /**
-     * Dibuja la representación gráfica de la bebida Fanta en el expendedor.
-     * La bebida se representa mediante un rectángulo de color naranja con el número de serie escrito en el centro.
+     * Dibuja la representación gráfica de la bebida Sprite en el expendedor.
+     * La bebida se representa mediante un rectángulo de color verde con el número de serie escrito en el centro.
      *
      * @param g El objeto graphics usado para dibujar en la interfaz gráfica.
      */
@@ -39,8 +37,7 @@ class Fanta extends Bebida{
     public void paint (Graphics g){
         g.setColor(Color.black);
         g.drawRect(x+3,y+3,143,26);
-        Color o=new Color(255,153,0);
-        g.setColor(o);
+        g.setColor(Color.GREEN);
         g.fillRect(x+4, y+4, 142, 25);
         g.setColor(Color.white);
         g.drawString(Integer.toString(getSerie()), x+60, y+21);
