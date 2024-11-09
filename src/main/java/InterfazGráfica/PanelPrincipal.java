@@ -41,6 +41,7 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     /**Hacemos esto por cada botón**/
 
     @Override
+    
     public void mouseClicked(MouseEvent e) {
         if (e.getX() >= 491 && e.getX() <= 491 + 150 &&
                 e.getY() >= 69 && e.getY() <= 69 + 350) {
