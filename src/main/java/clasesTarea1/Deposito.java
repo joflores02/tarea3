@@ -61,6 +61,15 @@ public class Deposito {
     }
 
     /**
+     * Obtiene la cantidad de bebidas actualmente almacenadas en el depósito.
+     *
+     * @return El número de bebidas en el depósito.
+     */
+    public int getCantidadBebidas() {
+        return bebs.size();
+    }
+
+    /**
      * Dibuja la representación gráfica del depósito y las bebidas almacenadas en él.
      *
      * @param g El objeto graphics usado para dibujar en la interfaz gráfica.

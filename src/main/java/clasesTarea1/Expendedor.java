@@ -132,30 +132,45 @@ public class Expendedor {
 
 
     /**
-     * Rellena el depósito de CocaCola con una cantidad de bebidas especificada.
+     * Rellena el depósito de CocaCola asegurandose de no exceder el máximo.
      */
     public void rellenarCoca(){
-        for(int i=0; i<numBebidas;i++){
-            coca.addBebida(new CocaCola(serieCoca++,x,y));
-        }System.out.println("Depósito Coca Cola rellenado");
+        if (coca.isEmpty()) {
+            for (int i = 0; i < numBebidas; i++) {
+                coca.addBebida(new CocaCola(serieCoca++, x, y));
+            }
+            System.out.println("Depósito Coca Cola rellenado");
+        } else {
+            System.out.println("No se puede rellenar el depósito de Coca Cola. El depósito no está vacío.");
+        }
     }
 
     /**
-     * Rellena el depósito de Sprite con una cantidad de bebidas especificada.
+     * Rellena el depósito de Sprite asegurandose de no exceder el máximo.
      */
     public void rellenarSprite(){
-        for(int i=0; i<numBebidas;i++){
-            sprite.addBebida(new Sprite(serieSprite++,x,y));
-        }System.out.println("Depósito Sprite rellenado");
+        if (sprite.isEmpty()) {
+            for (int i = 0; i < numBebidas; i++) {
+                sprite.addBebida(new Sprite(serieSprite++, x, y));
+            }
+            System.out.println("Depósito Sprite rellenado");
+        } else {
+            System.out.println("No se puede rellenar el depósito de Sprite. El depósito no está vacío.");
+        }
     }
 
     /**
-     * Rellena el depósito de Fanta con una cantidad de bebidas especificada.
+     * Rellena el depósito de Fanta asegurandose de no exceder el máximo.
      */
     public void rellenarFanta(){
-        for(int i=0; i<numBebidas;i++){
-            fanta.addBebida(new Fanta(serieFanta++,x,y));
-        }System.out.println("Depósito Fanta rellenado");
+        if (fanta.isEmpty()) {
+            for (int i = 0; i < numBebidas; i++) {
+                fanta.addBebida(new Fanta(serieFanta++, x, y));
+            }
+            System.out.println("Depósito Fanta rellenado");
+        } else {
+            System.out.println("No se puede rellenar el depósito de Fanta. El depósito no está vacío.");
+        }
     }
 
     /**
